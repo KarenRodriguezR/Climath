@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+</h:head>
+<h:body style="background-color: #64D3CA">
+	<div class="jumbotron">
+		<header style="text-align:center">
+
+		<h1>
+			<img src="sun.png" width="40px" height="40px"></img>Klima Wissen
+		</h1>
+		</header>
+
+	</div>
+
+	<div class="container">
+
+			<div>
+
+				<h:dataTable value="#{}" var="registros">
+					<h:column>
+						<f:facet name="header">Nombre Ciudad</f:facet>    				
+			      #{registros.ciudad.nombre}
+			   </h:column>
+								<h:column>
+									<f:facet name="header">Temperatura</f:facet>    				
+			      #{registros.temperatura}
+			   </h:column>
+			   <h:column>
+									<f:facet name="header">Humedad</f:facet>    				
+			      #{registros.humedad}
+			   </h:column>
+   
+   
+				</h:dataTable>
+
+
+
+			</div>
+
+	</div>
+
+
+
+</h:body>
+</html>
