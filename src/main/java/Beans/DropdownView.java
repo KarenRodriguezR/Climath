@@ -32,7 +32,7 @@ public class DropdownView implements Serializable {
     
    
 	public String getMs() {
-		return ms;122	3421
+		return ms;
 	}
 	public void setMs(String ms) {
 		this.ms = ms;
