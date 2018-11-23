@@ -1,61 +1,51 @@
 package Beans;
 
-import java.io.Serializable;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
 
 import controlador.CiudadControlador;
 import modelo.Ciudad;
+import modelo.Registro;
 import servicios.RESTEasyClientGet;
 
-@ManagedBean(name="lista")
-public class DropdownView implements Serializable {
+@ManagedBean(name="temp")
+
+public class DropdownView {
+	private Registro registro;
+	private List<Ciudad> ciudades;
+	private String ms;
 	
-    private List<Ciudad> ciudades;
-    private String ms;
-    private String res;
-    
-    public String getRes() {
-    	return res;
-    }
-    public void getRes(String res) {
-    	this.res=res;
-    }
-    
-    
-    
-   
+	public DropdownView(){
+		CiudadControlador ns = new CiudadControlador();
+		ciudades=ns.listarCiudades();
+		
+	}
+
+	public Registro getRegistro() {
+		return registro;
+	}
+	public void setRegistro(Registro registro) {
+		this.registro = registro;
+	}
+	public List<Ciudad> getCiudades() {
+		return ciudades;
+	}
+	public void setCiudades(List<Ciudad> ciudades) {
+		this.ciudades = ciudades;
+	}
 	public String getMs() {
 		return ms;
 	}
 	public void setMs(String ms) {
 		this.ms = ms;
 	}
-
-	
- 
-    public DropdownView () {
-    	CiudadControlador ns = new CiudadControlador();
-    	ciudades=ns.listarCiudades();
-    	
-    	
-    }
-   public List<Ciudad> getCiudades() {
-		return ciudades;
-	}
-
-	public void setCiudades(List<Ciudad> ciudades) {
-		this.ciudades = ciudades;
-	}
-	
-	public void mensaje() throws Exception {
-		RESTEasyClientGet nu = new RESTEasyClientGet();
-    	res=nu.cliente(ms);
+	public void consultaApi() throws Exception {
+		System.out.println(ms);
+		RESTEasyClientGet nuevo = new RESTEasyClientGet();
+		this.setRegistro(nuevo.llamado(ms));
+		System.out.println("SALE");
+		
+		
 	}
 }

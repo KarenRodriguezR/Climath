@@ -18,16 +18,17 @@ import modelo.Ciudad;
 
 public class RESTEasyClientGet {
 
-	public String cliente(String e) throws Exception {
-		
-		
+	public Registro llamado(String e) throws Exception {
+		//public static void main(String args[]) throws Exception {
+		System.out.println("BANDERA 1");
 		String url="http://api.openweathermap.org/data/2.5/weather?id=", codigo="",key="&APPID=617114929ea17380864e4250795e40f3";
-		BufferedReader bf = new BufferedReader(new InputStreamReader (System.in));
-		codigo= bf.readLine();
+		codigo= e;
+		System.out.println("H"+e);
 		ClientRequest request = new ClientRequest(url+codigo+key);
+		System.out.println("H2"+e);
 		request.accept("application/json");
 		ClientResponse<String> response = request.get(String.class);
-
+		
 		if (response.getStatus() != 200) {
 			throw new RuntimeException("Failed : HTTP error code : "
 				+ response.getStatus());
@@ -45,8 +46,11 @@ public class RESTEasyClientGet {
 			output=a.toString();
 			System.out.println(output);
 			JSONObject respuesta = new JSONObject(output);
+			System.out.println("FLAG");
 			JSONObject res = new JSONObject(respuesta.getJSONObject("main").toString());
-			Double temp=res.getDouble("temp")-273,hum=res.getDouble("humidity");	
+			System.out.println("FLAG");
+			Double temp=res.getDouble("temp")-273,hum=res.getDouble("humidity");
+			System.out.println("FLAG");
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 			DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("HH:mm");
 			LocalDateTime now = LocalDateTime.now();
@@ -55,14 +59,12 @@ public class RESTEasyClientGet {
 			String cad="La temperatura es: "+temp+"La humedad es: "+hum;				
 			int cod=Integer.parseInt(codigo);
 			Registro nuevo_registro= new Registro(cod,true,fecha,hora,hum,temp);
+			//Registro nuevo_registro= new Registro(12,true,"2016/11/16","12:08:43",23,13);
 			Boolean l;
 			RegistroControlador bd = new RegistroControlador();
+			
 			l=bd.create(cod,nuevo_registro);
-			return cad;
+			return nuevo_registro;
 	  
 	}
 }
-
-
-
-

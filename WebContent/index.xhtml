@@ -11,28 +11,48 @@
 	<title>CLIMA</title> 
 	
 </h:head>
-<h:body style="background-color: #64D3CA">
+<h:body style="background-color: #64a5d3">
 	<div class="jumbotron">
 		<header style="text-align:center">
-
 		<h1>
-			<img src="sun.png" width="40px" height="40px"></img>CLIMA DE KAREN Y CRISTHIAN
+			<img src="sun.png" width="40px" height="40px"></img>CLIMA 
 		</h1>
 		</header>
-		
-		
 	</div>
-		<h:form>
-					<p:selectOneMenu id="ms" value="#{lista.ms}">
-		                <f:selectItem itemLabel="Selecccione una ciudad" itemValue="" noSelectionOption="true" />
-		                <f:selectItems value="#{lista.ciudades}" var="city" itemLabel="#{city.nombre}" itemValue="#{city.idciudad}"/> 
-		            </p:selectOneMenu>
-		             <p:separator/> 
-		            <p:commandButton value="Consultar" action="lista.mensaje" icon="pi pi-check" />
-		           
-		           
-		</h:form>
+	
+	<h:form>
+		<p:selectOneMenu id="ms" value="#{temp.ms}">
+		 <f:selectItem itemLabel="Selecccione una ciudad" itemValue="" noSelectionOption="true" />
+		  <f:selectItems value="#{temp.ciudades}" var="city" itemLabel="#{city.nombre}" itemValue="#{city.idciudad}"/> 
+		     </p:selectOneMenu>
+		     		
+		            <p:commandButton value="Consultar" actionListener="#{temp.consultaApi()}" update="car"/>
+		            
+		         
+		            <p:commandButton value="Graficos" action="estadis.xhtml"/>
+		            <br></br>
+  	<p:separator/> 
+    
+		           		
+	<p:dataTable id="car" value="#{temp.registro}">
+    <p:column headerText="Temperatura">
+        <h:outputText value="#{temp.registro.temperatura}" />
+    </p:column>
+ 
+    <p:column headerText="Humedad">
+        <h:outputText value="#{temp.registro.humedad}" />
+    </p:column>
+ 
+    <p:column headerText="Fecha">
+        <h:outputText value="#{temp.registro.fecha}" />
+    </p:column>
+ 
+    <p:column headerText="Hora">
+        <h:outputText value="#{temp.registro.hora}" />
+    </p:column>
+</p:dataTable>
             
+	</h:form>
 	
 </h:body>
 </html>
