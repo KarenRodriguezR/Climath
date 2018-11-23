@@ -5,9 +5,9 @@
 	<class>modelo.Registro</class>
 		<properties>
 			<property name="eclipselink.jdbc.batch-writing" value="JDBC"/>
-			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/Clima"/>
-			<property name="javax.persistence.jdbc.user" value="postgres"/>
-			<property name="javax.persistence.jdbc.password" value="karen"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-54-227-244-12.compute-1.amazonaws.com:5432/d38r5iovccvqau"/>
+			<property name="javax.persistence.jdbc.user" value="movnoqucjlmaxc"/>
+			<property name="javax.persistence.jdbc.password" value="406d8e3e2210fae62ee7594f1ccb7ea1e4a5ad292172a9b54766a94987e262ec"/>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 		</properties>
 	</persistence-unit>
